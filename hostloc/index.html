@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>hostloc</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script type="text/javascript">
+        function load(i) {
+            var img = new Image();
+
+            img.onerror = function () {
+                img.onerror = null;
+                if (i < 10) load(i + 1);
+                else {
+                    alert('刷分完毕');
+                    location.href = document.referrer || 'http://www.hostloc.com';
+                    return;
+                }
+                document.querySelector('#j_count').innerHTML = (i + 1) * 10 + ' %'
+
+            };
+
+            img.src = "http://www.hostloc.com/space-uid-" + (23978 + i) + ".html";
+        }
+
+        load(1);
+    </script>
+    <style type="text/css">
+        body {
+            text-align: center;
+            padding-top: 150px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0 0 2rem 0;
+            color: #333;
+        }
+
+        div {
+            font-size: 15px;
+            color: #666;
+            margin: 1em 0;
+        }
+
+        #turnkey-credit {
+            display: none;
+        }
+    </style>
+    <style type='text/css'>
+        #turnkey-credit {
+            font-family: Tahoma, Sans, Arial, Helvetica, Verdana, sans-serif;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        #turnkey-credit a {
+            text-decoration: none;
+        }
+
+        #turnkey-credit a:hover {
+            text-decoration: underline;
+        }
+
+        body.wp-admin #turnkey-credit,
+        body#image #turnkey-credit,
+        body#media-upload #turnkey-credit {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HOSTLOC 刷积分</h1>
+    <div>已经完成
+        <span id="j_count">0 %</span>
+    </div>
+</body>
+
+</html>
