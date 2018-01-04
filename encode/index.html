@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编码对照表</title>
+    <style>
+        table { border-collapse:collapse; width: 1000px; table-layout:fixed; }
+        table td,
+        table th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            word-break: break-all;
+            font-size: 14px;
+        }
+        table tr td:first-of-type,
+        table tr td:nth-child(4) {
+            text-align: center;
+        }
+        table a { color: #0088cc }
+    </style>
+</head>
+<body>
+    <h1>编码对照表</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>编码</th>
+                <th>原文</th>
+                <th>编码后</th>
+                <th>在线转换</th>
+                <th>备注</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Unicode</td>
+                <td>这是一个例子,this is a example</td>
+                <td>&#36825;&#26159;&#19968;&#20010;&#20363;&#23376;&#44;&#116;&#104;&#105;&#115;&#32;&#105;&#115;&#32;&#97;&#32;&#101;&#120;&#97;&#109;&#112;&#108;&#101;</td>
+                <td><a href="http://tool.oschina.net/encode">cover</a></td>
+                <td>转换结果可以直接放在HTML中显示👉 &#36825;&#26159;&#19968;&#20010;&#20363;&#23376;</td>
+            </tr>
+            <tr>
+                <td>UTF-8</td>
+                <td>这是一个例子,this is a example</td>
+                <td>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;,this is a example</td>
+                <td><a href="http://tool.oschina.net/encode?type=2">cover</a></td>
+                <td>转换结果同样可以直接放在HTML中显示👉 &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;</td>
+            </tr>
+            <tr>
+                <td>ASCII</td>
+                <td>这是一个例子,this is a example</td>
+                <td>\u8fd9\u662f\u4e00\u4e2a\u4f8b\u5b50\u002c\u0074\u0068\u0069\u0073\u0020\u0069\u0073\u0020\u0061\u0020\u0065\u0078\u0061\u006d\u0070\u006c\u0065</td>
+                <td><a href="http://tool.oschina.net/encode?type=3">cover</a></td>
+                <td>Java中的properties配置文件可以使用这种格式</td>
+            </tr>
+            <tr>
+                <td>URL转码</td>
+                <td>http://www.oschina.net/search?scope=bbs&q=C语言</td>
+                <td>http://www.oschina.net/search?scope=bbs&q=C%E8%AF%AD%E8%A8%80</td>
+                <td><a href="http://tool.oschina.net/encode?type=4">cover</a></td>
+                <td>encodeURI用于完整的URL编码，encodeURIComponent用于拼接URL的参数</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
