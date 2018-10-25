@@ -6,8 +6,9 @@
     <title>变量命名转换 - 驼峰命名转换短横线分隔命名 - 转换下划线分隔命名</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        .row input { padding: 4px 10px; width: 300px; border: 1px solid #666; }
+        .row textarea { padding: 4px 10px; width: 300px; height: 50px; border: 1px solid #666; }
         .row button { margin: 0 20px; }
+        .row>span { display: inline-block; vertical-align: top; }
     </style>
 </head>
 <body>
@@ -21,7 +22,7 @@
 </h2>
 <div>
     <span class="row">
-        <input id="ipt1" type="text">
+        <textarea id="ipt1"></textarea>
         <button id="btn1">转换</button>
         <span id="result1"></span>
     </span>
@@ -33,7 +34,7 @@
 </h2>
 <div>
     <span class="row">
-        <input id="ipt2" type="text">
+        <textarea id="ipt2"></textarea>
         <button id="btn2">转换</button>
         <span id="result2"></span>
     </span>
@@ -45,7 +46,7 @@
 </h2>
 <div>
     <span class="row">
-        <input id="ipt3" type="text">
+        <textarea id="ipt3"></textarea>
         <button id="btn3">转换</button>
         <span id="result3"></span>
     </span>
@@ -57,7 +58,7 @@
 </h2>
 <div>
     <span class="row">
-        <input id="ipt4" type="text">
+        <textarea id="ipt4"></textarea>
         <button id="btn4">转换</button>
         <span id="result4"></span>
     </span>
@@ -69,7 +70,7 @@
 </h2>
 <div>
     <span class="row">
-        <input id="ipt5" type="text">
+        <textarea id="ipt5"></textarea>
         <input id="char5" type="text" placeholder="分隔字符，如: -">
         <button id="btn5">转换</button>
         <span id="result5"></span>
@@ -111,29 +112,49 @@
     // 转小驼峰命名
     document.getElementById('btn1').onclick = function () {
         var str = document.getElementById('ipt1').value;
-        document.getElementById('result1').innerHTML = horizontalLine2LittleCamelCase(str);
+        var html = '';
+        str.split('\n').forEach(s => {
+            html += '<p>' + horizontalLine2LittleCamelCase(s) + '</p>';
+            document.getElementById('result1').innerHTML = html;
+        });
     };
     // 转大驼峰命名
     document.getElementById('btn2').onclick = function () {
         var str = document.getElementById('ipt2').value;
-        document.getElementById('result2').innerHTML = horizontalLine2BigCamelCase(str);
+        var html = '';
+        str.split('\n').forEach(s => {
+            html += '<p>' + horizontalLine2BigCamelCase(s) + '</p>';
+            document.getElementById('result2').innerHTML = html;
+        });
     };
     // 转短横线
     document.getElementById('btn3').onclick = function () {
         var str = document.getElementById('ipt3').value;
         var temp = firstLowerCase(str);
-        document.getElementById('result3').innerHTML = camelCase2CharSplit(temp, '-');
+        var html = '';
+        temp.split('\n').forEach(s => {
+            html += '<p>' + camelCase2CharSplit(s, '-') + '</p>';
+            document.getElementById('result3').innerHTML = html;
+        });
     };
     document.getElementById('btn4').onclick = function () {
         var str = document.getElementById('ipt4').value;
         var temp = firstLowerCase(str);
-        document.getElementById('result4').innerHTML = camelCase2CharSplit(temp, '_');
+        var html = '';
+        temp.split('\n').forEach(s => {
+            html += '<p>' + camelCase2CharSplit(s, '_') + '</p>';
+            document.getElementById('result4').innerHTML = html;
+        });
     };
     document.getElementById('btn5').onclick = function () {
         var str = document.getElementById('ipt5').value;
         var char = document.getElementById('char5').value;
         var temp = firstLowerCase(str);
-        document.getElementById('result5').innerHTML = camelCase2CharSplit(temp, char);
+        var html = '';
+        temp.split('\n').forEach(s => {
+            html += '<p>' + camelCase2CharSplit(s, char) + '</p>';
+            document.getElementById('result5').innerHTML = html;
+        });
     };
 </script>
 </body>
