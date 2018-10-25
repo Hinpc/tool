@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>变量命名转换 - 驼峰命名转换短横线分隔命名 - 转换下划线分隔命名</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .row input { padding: 4px 10px; width: 300px; border: 1px solid #666; }
+        .row button { margin: 0 20px; }
+    </style>
+</head>
+<body>
+<h1>
+    变量命名转换 - 驼峰命名转换短横线分隔命名 - 转换下划线分隔命名
+</h1>
+
+<hr>
+<h2>
+    短横线转小驼峰命名
+</h2>
+<div>
+    <span class="row">
+        <input id="ipt1" type="text">
+        <button id="btn1">转换</button>
+        <span id="result1"></span>
+    </span>
+</div>
+
+<hr>
+<h2>
+    短横线转大驼峰命名
+</h2>
+<div>
+    <span class="row">
+        <input id="ipt2" type="text">
+        <button id="btn2">转换</button>
+        <span id="result2"></span>
+    </span>
+</div>
+
+<hr>
+<h2>
+    驼峰转短横线分隔命名
+</h2>
+<div>
+    <span class="row">
+        <input id="ipt3" type="text">
+        <button id="btn3">转换</button>
+        <span id="result3"></span>
+    </span>
+</div>
+
+<hr>
+<h2>
+    驼峰转下划线分隔命名
+</h2>
+<div>
+    <span class="row">
+        <input id="ipt4" type="text">
+        <button id="btn4">转换</button>
+        <span id="result4"></span>
+    </span>
+</div>
+
+<hr>
+<h2>
+    驼峰转指定字符分隔命名
+</h2>
+<div>
+    <span class="row">
+        <input id="ipt5" type="text">
+        <input id="char5" type="text" placeholder="分隔字符，如: -">
+        <button id="btn5">转换</button>
+        <span id="result5"></span>
+    </span>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<script>
+    function firstUpperCase(str) {
+        return str.slice(0,1).toUpperCase() + str.slice(1).toLowerCase();
+    }
+    function firstLowerCase(str) { // 首字母小写，其他字母不变
+        return str.slice(0,1).toLowerCase() + str.slice(1);
+    }
+    // 转大驼峰命名
+    function horizontalLine2BigCamelCase(str) {
+        var arr = str.split('-');
+        return arr.map(word => firstUpperCase(word)).join('');
+    }
+    // 转小驼峰命名
+    function horizontalLine2LittleCamelCase(str) {
+        return firstLowerCase(horizontalLine2BigCamelCase(str));
+    }
+
+    // 转指定字符（如短横线）分隔
+    function camelCase2CharSplit(str, char) {
+        char = char || '';
+
+        var temp = firstLowerCase(str);
+        var splitter = char + '$1'
+        return temp.replace(/([A-Z])/g, splitter).toLowerCase();
+    }
+
+    // 转小驼峰命名
+    document.getElementById('btn1').onclick = function () {
+        var str = document.getElementById('ipt1').value;
+        document.getElementById('result1').innerHTML = horizontalLine2LittleCamelCase(str);
+    };
+    // 转大驼峰命名
+    document.getElementById('btn2').onclick = function () {
+        var str = document.getElementById('ipt2').value;
+        document.getElementById('result2').innerHTML = horizontalLine2BigCamelCase(str);
+    };
+    // 转短横线
+    document.getElementById('btn3').onclick = function () {
+        var str = document.getElementById('ipt3').value;
+        var temp = firstLowerCase(str);
+        document.getElementById('result3').innerHTML = camelCase2CharSplit(temp, '-');
+    };
+    document.getElementById('btn4').onclick = function () {
+        var str = document.getElementById('ipt4').value;
+        var temp = firstLowerCase(str);
+        document.getElementById('result4').innerHTML = camelCase2CharSplit(temp, '_');
+    };
+    document.getElementById('btn5').onclick = function () {
+        var str = document.getElementById('ipt5').value;
+        var char = document.getElementById('char5').value;
+        var temp = firstLowerCase(str);
+        document.getElementById('result5').innerHTML = camelCase2CharSplit(temp, char);
+    };
+</script>
+</body>
+</html>

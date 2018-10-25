@@ -1,7 +1,8 @@
 # tool
 online web tools
 
-- [hostloc刷积分](http://tool.hinpc.com/hostloc/)
-- [Aria2 WebUI](http://aria.hinpc.com)
+- [驼峰与短横线变量命名转换](http://tool.hinpc.com/name-transform/)
 - [编码对照表](http://tool.hinpc.com/encode/)
-- [磁力链接转种子](http://www.torrent.org.cn/)
+- [Aria2 WebUI](http://aria.hinpc.com)
+- [torrent转换](http://www.torrent.org.cn/)
+- [hostloc刷积分](http://tool.hinpc.com/hostloc/)
