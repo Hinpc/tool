@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PT站搜索</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bulma/0.7.2/css/bulma.min.css">
+    <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+        .w300 {width: 300px;}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>PT Search</h1>
+        <input type="text" id="search" class="w300" placeholder="要搜索的内容">
+        <br>
+        <br>
+
+
+        <div class="sites">
+            <label>
+                <input type="checkbox" value="https://ourbits.club/torrents.php?notnewword=1&search="> ourbits
+            </label>
+
+            <label>
+                <input type="checkbox" value="http://hdhome.org/torrents.php?notnewword=1&search="> hdhome
+            </label>
+
+            <label>
+                <input type="checkbox" value="https://pt.gztown.net/torrents.php?notnewword=1&search="> gztown
+            </label>
+
+            <label>
+                <input type="checkbox" value="https://pt.btschool.net/torrents.php?notnewword=1&search="> btschool
+            </label>
+
+            <label>
+                <input type="checkbox" value="https://nanyangpt.com/torrents.php?notnewword=1&search="> nanyangpt
+            </label>
+
+        </div>
+        <div class="sites cus">
+            <label>
+                <input type="checkbox" value="1">
+                自定义
+                <input type="text" class="w300" placeholder="如: https://ourbits.club/torrents.php?search=">
+            </label>
+        </div>
+
+        <br>
+
+        <div>
+            <button class="button" id="go">搜索</button>
+        </div>
+    </div>
+
+</body>
+<script>
+document.getElementById('go').onclick = () => {
+    var sites = $('.sites input[type="checkbox"]:checked');
+    var searchContent = $('#search').val().trim();
+    if (!searchContent) {
+        return;
+    }
+    $.each(sites, (_, s) => {
+        var val = $(s).val();
+        if (val == 1) {
+            var url = $('.sites.cus input[type="text"]').val();
+            if (!url) return;
+            window.open(url + searchContent);
+            window.localStorage.setItem('customsite', url);
+        } else {
+            window.open(val + searchContent);
+        }
+    })
+};
+(function () {
+    var cus = window.localStorage.getItem('customsite');
+    if (cus) $('.sites.cus input[type="text"]').val(cus);
+})();
+</script>
+
+</html>
